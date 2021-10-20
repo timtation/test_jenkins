@@ -43,7 +43,10 @@ jobs:
 
       # echo input parameter
       - name: Echo input parameter
-        run: echo myinput ${{ github.event.inputs.inputs.myinput }}
+        env:
+          MYINPUT: ${{ github.event.inputs.myinput }}
+        with:
+          script: echo myinput ${MYINPUT}
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
